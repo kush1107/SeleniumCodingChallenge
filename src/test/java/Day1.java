@@ -8,6 +8,13 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+/*𝐃𝐚𝐲 1 -𝐂𝐨𝐝𝐢𝐧𝐠 𝐂𝐡𝐚𝐥𝐥𝐞𝐧𝐠𝐞:
+        𝐓𝐞𝐬𝐭 𝐒𝐜𝐞𝐧𝐚𝐫𝐢𝐨: Develop an automation script that bypasses the Basic Browser Authentication Popup.
+        Link: https://lnkd.in/dB3ZAGi7
+
+        𝐔𝐬𝐞𝐫𝐧𝐚𝐦𝐞: admin
+        𝐏𝐚𝐬𝐬𝐰𝐨𝐫𝐝: admin*/
+
 public class Day1 {
     public static WebDriver driver;
 

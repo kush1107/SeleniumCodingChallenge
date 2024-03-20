@@ -1,22 +1,24 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.hc.core5.util.Asserts;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
-
 import java.time.Duration;
 
-public class ButtonAnimation {
+/*Day-4 𝐔𝐬𝐢𝐧𝐠 𝐬𝐞𝐥𝐞𝐧𝐢𝐮𝐦 𝐚𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 - 𝐂𝐥𝐢𝐜𝐤 𝐨𝐧 𝐭𝐡𝐞 𝐠𝐫𝐨𝐰𝐢𝐧𝐠 𝐛𝐮𝐭𝐭𝐨𝐧 𝐚𝐧𝐝 𝐨𝐧𝐜𝐞 𝐜𝐥𝐢𝐜𝐤𝐞𝐝 𝐲𝐨𝐮 𝐬𝐡𝐨𝐮𝐥𝐝 𝐬𝐞𝐞 "𝐄𝐯𝐞𝐧𝐭 𝐓𝐫𝐢𝐠𝐠𝐞𝐫𝐞𝐝" 𝐦𝐞𝐬𝐬𝐚𝐠𝐞.
+        𝐕𝐞𝐫𝐢𝐟𝐲 𝐭𝐡𝐚𝐭 "𝐄𝐯𝐞𝐧𝐭 𝐓𝐫𝐢𝐠𝐠𝐞𝐫𝐞𝐝".
+        𝐇𝐢𝐧𝐭: Not all elements are instantly clickable, particularly when animations etc. are in use.
+        https://lnkd.in/d9HmwQu7  */
+
+
+public class Day4 {
 
     public static WebDriver driver;
 
@@ -24,10 +26,15 @@ public class ButtonAnimation {
     public void setup()
     {
         WebDriverManager.chromedriver().setup();
-        // Set Chrome options to disable animations
-        // Initialize the WebDriver instance
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
+        driver.manage().window().maximize();
+    }
+    @AfterClass
+    public void tearDown()
+    {
+        driver.quit();
     }
 
 
@@ -57,11 +64,5 @@ public class ButtonAnimation {
         }
         
     }
-
-       @AfterClass
-       public void tearDown()
-       {
-           driver.quit();
-       }
 
 }
