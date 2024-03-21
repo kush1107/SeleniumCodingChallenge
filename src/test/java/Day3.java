@@ -24,7 +24,6 @@ public class Day3 {
     @BeforeClass
     public void setup()
     {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));

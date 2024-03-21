@@ -1,4 +1,3 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +9,34 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+/* Day-14 𝐂𝐫𝐞𝐚𝐭𝐞 𝐚𝐧 𝐚𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐒𝐞𝐥𝐞𝐧𝐢𝐮𝐦 𝐭𝐞𝐬𝐭 𝐬𝐜𝐫𝐢𝐩𝐭 𝐭𝐡𝐚𝐭 𝐯𝐚𝐥𝐢𝐝𝐚𝐭𝐞𝐬 𝐟𝐨𝐥𝐥𝐨𝐰𝐢𝐧𝐠 𝐭𝐰𝐨 𝐭𝐞𝐬𝐭 𝐜𝐚𝐬𝐞𝐬:
+
+        ✅𝐓𝐞𝐬𝐭 𝐂𝐚𝐬𝐞 1: 𝐕𝐞𝐫𝐢𝐟𝐲 𝐅𝐥𝐢𝐠𝐡𝐭 𝐑𝐞𝐬𝐮𝐥𝐭𝐬 𝐒𝐞𝐚𝐫𝐜𝐡
+
+        𝐒𝐭𝐞𝐩𝐬:
+        -Open the JetBlue website - https://www.jetblue.com/.
+        -Enter "Mumbai" in the departure city field and select it from the dynamic list.
+        -Enter "London-Heathrow, UK (LHR)" in the destination city field and select it from the dynamic list.
+        -Enter the departure date as "03/19/2024" in the date picker.
+        -Enter the return date as "03/20/2024" in the date picker.
+        -Click on the "Search flights" button.
+        -Verify that the results for the flights are displayed or not.
+
+        ✅𝐓𝐞𝐬𝐭 𝐂𝐚𝐬𝐞 2: 𝐕𝐞𝐫𝐢𝐟𝐲 𝐅𝐚𝐢𝐥𝐞𝐝 𝐅𝐥𝐢𝐠𝐡𝐭 𝐒𝐞𝐚𝐫𝐜𝐡
+
+        𝐒𝐭𝐞𝐩𝐬:
+        -Open the JetBlue website - https://www.jetblue.com/.
+        -Enter "Mumbai" in the departure city field and select it from the dynamic list.
+        -Enter "London-Heathrow, UK (LHR)" in the destination city field and select it from the dynamic list.
+        -Enter the departure date as "01/01/2024" in the date picker.
+        -Enter the return date as "01/01/2024" in the date picker.
+        -Click on the "Search flights" button.
+        -Verify and capture the validation msg.
+
+        𝐍𝐨𝐭𝐞: Use TestNG and execute test cases one by one using priority and the browser should be launched only once. Here date format MM/DD/YYYY is applicable. */
 
 public class Day14 {
 
@@ -18,7 +45,6 @@ public class Day14 {
     @BeforeSuite
     public void setup()
     {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
@@ -55,14 +81,20 @@ public class Day14 {
         driver.findElement(By.xpath("//strong[contains(text(),'London')]")).click();
 
         driver.findElement(By.xpath("(//input[contains(@id,'date-picker')])[1]")).click();
-        driver.findElement(By.xpath("(//input[contains(@id,'date-picker')])[1]")).sendKeys("03/19/2024");
+        driver.findElement(By.xpath("(//input[contains(@id,'date-picker')])[1]")).sendKeys(setCurrentDate());
 
         driver.findElement(By.xpath("(//input[contains(@id,'date-picker')])[2]")).click();
-        driver.findElement(By.xpath("(//input[contains(@id,'date-picker')])[2]")).sendKeys("03/20/2024");
+        driver.findElement(By.xpath("(//input[contains(@id,'date-picker')])[2]")).sendKeys(setCurrentDatePlusTwo());
 
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//button//span//span[normalize-space()='Search flights']")));
         driver.findElement(By.xpath("//button//span//span[normalize-space()='Search flights']")).click();
 
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Continue']")));
+            driver.findElement(By.xpath("//button[normalize-space()='Continue']")).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//button//span//span[normalize-space()='Search flights']")));
         driver.findElement(By.xpath("//button//span[normalize-space()='Continue to flight results']")).click();
@@ -120,7 +152,22 @@ public class Day14 {
     @AfterSuite
     public void tearDown()
     {
-
         driver.quit();
+    }
+
+    public String setCurrentDate()
+    {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String formattedCurrentDate = currentDate.format(formatter);
+        return formattedCurrentDate;
+    }
+
+    public String setCurrentDatePlusTwo()
+    {
+        LocalDate currentDate = LocalDate.now().plusDays(2);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String formattedCurrentDate = currentDate.format(formatter);
+        return formattedCurrentDate;
     }
 }

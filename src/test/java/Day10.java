@@ -20,6 +20,19 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+/*    Day 10 𝐂𝐫𝐞𝐚𝐭𝐞 𝐚𝐧 𝐚𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐒𝐞𝐥𝐞𝐧𝐢𝐮𝐦 𝐭𝐞𝐬𝐭 𝐬𝐜𝐫𝐢𝐩𝐭 𝐭𝐡𝐚𝐭 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐟𝐢𝐥𝐞 𝐢𝐧 𝐏𝐃𝐅 𝐟𝐢𝐥𝐞 𝐢𝐧 𝐲𝐨𝐮𝐫 𝐥𝐨𝐜𝐚𝐥 𝐚𝐧𝐝 𝐯𝐞𝐫𝐢𝐟𝐲 𝐭𝐡𝐞 𝐭𝐞𝐱𝐭 "𝐆𝐞𝐭 𝐓𝐢𝐜𝐤𝐞𝐭𝐬" 𝐢𝐧𝐬𝐢𝐝𝐞 𝐭𝐡𝐚𝐭 𝐏𝐃𝐅 𝐟𝐢𝐥𝐞.
+
+        𝐒𝐭𝐞𝐩𝐬 :
+        1) 𝐍𝐚𝐯𝐢𝐠𝐚𝐭𝐞 𝐭𝐨 𝐰𝐞𝐛𝐬𝐢𝐭𝐞:
+        https://lnkd.in/dE-sxjvG
+        2) 𝐂𝐥𝐢𝐜𝐤 𝐨𝐧 𝐭𝐡𝐞 "𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝" 𝐛𝐮𝐭𝐭𝐨𝐧 𝐛𝐞𝐥𝐨𝐰 𝐭𝐡𝐞 𝐭𝐞𝐱𝐭 "𝐅𝐢𝐥𝐞 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐃𝐞𝐦𝐨 𝐟𝐨𝐫 𝐀𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧"
+        3) 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐭𝐡𝐞 𝐟𝐢𝐥𝐞 𝐢𝐧 𝐲𝐨𝐮𝐫 𝐥𝐨𝐜𝐚𝐥.
+        4) 𝐏𝐫𝐢𝐧𝐭 𝐭𝐡𝐞 𝐟𝐢𝐥𝐞 𝐧𝐚𝐦𝐞, 𝐟𝐢𝐥𝐞 𝐬𝐢𝐳𝐞, 𝐚𝐧𝐝 𝐥𝐨𝐜𝐚𝐭𝐢𝐨𝐧 𝐨𝐟 𝐭𝐡𝐞 𝐩𝐚𝐭𝐡 𝐰𝐡𝐞𝐫𝐞 𝐭𝐡𝐞 𝐟𝐢𝐥𝐞 𝐢𝐬 𝐬𝐚𝐯𝐞𝐝.
+        5) 𝐕𝐞𝐫𝐢𝐟𝐲 𝐭𝐡𝐚𝐭 𝐭𝐡𝐞 𝐭𝐞𝐱𝐭 "𝐆𝐞𝐭 𝐓𝐢𝐜𝐤𝐞𝐭𝐬" 𝐞𝐱𝐢𝐬𝐭𝐬 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐢𝐥𝐞 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝 (𝐏𝐃𝐅) 𝐨𝐫 𝐧𝐨𝐭.
+
+        𝐇𝐢𝐧𝐭: 𝐔𝐬𝐞 𝐂𝐡𝐫𝐨𝐦𝐞𝐎𝐩𝐭𝐢𝐨𝐧𝐬 𝐚𝐧𝐝 𝐀𝐩𝐚𝐜𝐡𝐞 𝐏𝐃𝐅𝐁𝐨𝐱 𝐃𝐞𝐩𝐞𝐧𝐝𝐞𝐧𝐜𝐢𝐞𝐬         */
+
+
 public class Day10 {
     public static WebDriver driver;
     public static String downloadFilepath = "C:\\Users\\KushalParikh\\Downloads";
@@ -40,7 +53,6 @@ public class Day10 {
         opt.setExperimentalOption("prefs", prefs);
 
         // Set up WebDriver
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(opt);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
