@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,7 +32,9 @@ public class Day9 {
     @BeforeClass
     public void setup()
     {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.setAcceptInsecureCerts(true);
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(25));
         driver.manage().window().maximize();
@@ -46,10 +49,6 @@ public class Day9 {
     public void ShadowDOMTest() throws IOException, UnsupportedFlavorException {
         driver.get("https://uitestingplayground.com/shadowdom");
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-        WebElement advance_safe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("details-button")));
-        advance_safe.click();
-        WebElement proceed_link = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("proceed-link")));
-        proceed_link.click();
         SearchContext shadowDOMContext = driver.findElement(By.tagName("guid-generator")).getShadowRoot();
         shadowDOMContext.findElement(By.cssSelector(".button-generate")).click();
         WebElement element = shadowDOMContext.findElement(By.cssSelector(".edit-field"));
