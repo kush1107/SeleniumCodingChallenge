@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Random;
 
 /*✅𝐓𝐞𝐬𝐭 𝐒𝐜𝐞𝐧𝐚𝐫𝐢𝐨:
-
 𝐂𝐫𝐞𝐚𝐭𝐞 𝐚𝐧 𝐚𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐨𝐧 𝐒𝐞𝐥𝐞𝐧𝐢𝐮𝐦 𝐭𝐞𝐬𝐭 𝐬𝐜𝐫𝐢𝐩𝐭 𝐭𝐡𝐚𝐭 𝐀𝐝𝐝 𝐚𝐧𝐝 𝐫𝐞𝐦𝐨𝐯𝐞 𝐭𝐚𝐠𝐬 𝐚𝐧𝐝 𝐚𝐬𝐬𝐞𝐫𝐭 𝐭𝐚𝐠'𝐬 𝐩𝐫𝐞𝐬𝐞𝐧𝐜𝐞 𝐚𝐧𝐝 𝐜𝐨𝐮𝐧𝐭.
-
 ✅𝐒𝐭𝐞𝐩𝐬 :
 
 1) 𝐍𝐚𝐯𝐢𝐠𝐚𝐭𝐞 𝐭𝐨 𝐰𝐞𝐛𝐬𝐢𝐭𝐞:
@@ -32,8 +30,6 @@ public class Day11 {
     public static WebDriver driver;
 
     Faker faker = new Faker();
-    Random randomtag = new Random();
-
     @BeforeClass
     public void setup()
     {
