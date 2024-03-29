@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Scanner;
 
 /*✅𝐓𝐞𝐬𝐭 𝐒𝐜𝐞𝐧𝐚𝐫𝐢𝐨:
 
@@ -25,7 +24,7 @@ import java.util.Scanner;
 
 public class Day19 {
     public static WebDriver driver;
-    public static int input=4;  //You can take user input from excel,properties file for config file as per real scenario
+    public static int input=4;  //You can take user input from excel,properties file for config file or from command line as per real scenario
 
     @BeforeClass
     public void setup() {
