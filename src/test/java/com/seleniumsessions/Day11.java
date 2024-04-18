@@ -1,3 +1,5 @@
+package com.seleniumsessions;
+
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

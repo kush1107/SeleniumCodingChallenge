@@ -1,4 +1,5 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+package com.seleniumsessions;
+
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;

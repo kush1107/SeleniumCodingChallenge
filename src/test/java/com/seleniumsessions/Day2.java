@@ -1,4 +1,7 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+package com.seleniumsessions;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +19,7 @@ import java.time.Duration;
 
 public class Day2 {
     public static WebDriver driver;
+    public static Logger log = LogManager.getLogger(Day2.class);
 
     @BeforeClass
     public void setup()
@@ -35,7 +39,9 @@ public class Day2 {
     public void DisabledFieldTest()
     {
         driver.get("https://seleniumpractise.blogspot.com/2016/09/how-to-work-with-disable-textbox-or.html");
+        log.info("Url is launched");
         driver.manage().window().maximize();
+        log.debug("Url is launched");
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("document.getElementById('pass').removeAttribute('disabled')");
         driver.findElement(By.id("pass")).sendKeys("Hello");

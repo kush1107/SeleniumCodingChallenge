@@ -1,3 +1,5 @@
+package com.seleniumsessions;
+
 import com.github.javafaker.Faker;
 import org.json.JSONArray;
 import org.json.JSONObject;

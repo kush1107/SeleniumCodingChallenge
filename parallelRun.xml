@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ParallelTests" parallel="tests" thread-count="2">
+    <test name="ChromeTest">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.seleniumsessions.Day24"/>
+            <!-- Add more test classes if needed -->
+        </classes>
+    </test>
+    <test name="EdgeTest">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.seleniumsessions.Day24"/>
+            <!-- Add more test classes if needed -->
+        </classes>
+    </test>
+</suite>
